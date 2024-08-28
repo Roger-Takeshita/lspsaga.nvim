@@ -94,10 +94,16 @@ function rename:lsp_rename(args)
   local cword = fn.expand('<cword>')
   self.pos = api.nvim_win_get_cursor(0)
   local mode, project = parse_argument(args)
+  local word_len = string.len(cword)
+  local width = word_len + 15
+
+  if word_len > 25 then
+    width = word_len * 2
+  end
 
   local float_opt = {
     height = 1,
-    width = 30,
+    width = width,
   }
 
   if config.ui.title then
