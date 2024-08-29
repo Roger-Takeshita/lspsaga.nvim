@@ -158,6 +158,8 @@ function rename:lsp_rename(args)
         api.nvim_del_autocmd(close_unfocus)
         close_unfocus = nil
       end
+      -- vim.cmd('hi clear Search')
+      vim.cmd('hi! link RenameMatch NONE')
     end,
   })
 
